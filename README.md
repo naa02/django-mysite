@@ -5,17 +5,17 @@
 - 참고 : [점프 투 장고](https://wikidocs.net/book/4223)
 
 ## 개발 환경
-- server  
+- **server**  
   - CentOS7로 할 예정  
-- db  
+- **db**  
   - MySQL로 할 예정  
-- python  
+- **python**  
   - 3.8 ver  
   - Django 3.1.3  
   - requests etc  
-- javascript  
+- **javascript**  
   - jquery-3.6.0  
-- css  
+- **css**  
   - bootstrap 4.5.3  
-- 사용한 openAPI
+- **openAPI**
   - [한국관광공사_국문 관광정보 서비스](https://www.data.go.kr/data/15057787/openapi.do)
