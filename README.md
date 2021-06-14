@@ -14,7 +14,7 @@
   - Django 3.1.3  
   - requests etc  
 - **javascript**  
-  - jquery-3.6.0  
+  - jquery-3.6.0.min.js  
 - **css**  
   - bootstrap 4.5.3  
 - **openAPI**
