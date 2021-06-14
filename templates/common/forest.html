@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if forestList %}
+    {% for data in forestList %}
+    제목 : {{ data.title }} <br>
+    주소 : {{ data.addr1 }} <br>
+    상세주소 : {{ data.addr2 }} <br>
+    최초 등록일 : {{ data.createdtime }} <br>
+    원본 대표 이미지 : {{ data.firstimage }} <br>
+    썸네일 이미지 : {{ data.firstimage2 }} <br>
+    ---------------------------------------------<br>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
