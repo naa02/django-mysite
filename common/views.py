@@ -5,7 +5,10 @@ from urllib.request import Request, urlopen
 from urllib.parse import unquote, urlencode, quote_plus
 import requests
 import xml.etree.ElementTree as elemTree
-from .models import Forest
+from .models import Forest, Review
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from .forms import ReviewForm
 
 def signup(request):
     """
@@ -65,10 +68,28 @@ def forest(request):
                 continue
             firstimage = element.find('firstimage').text # 원본 대표 이미지
    
-            data = {"title":title, "addr1":addr1, "addr2":addr2, "firstimage":firstimage}
+            data = {"title":title, "addr1":addr1, "addr2 ":addr2, "firstimage":firstimage}
 
             forestList.append(data)
 
     context = {'forestList' : forestList}
     print(forestList)
     return render(request,'common/forest.html',context)
+
+@login_required(login_url='common:login')
+def review(request):
+    """
+    review 등록
+    """
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = request.user  # 추가한 속성 author 적용
+            review.create_date = timezone.now()
+            review.save()
+            return redirect('pybo:index')
+    else:
+        form = ReviewForm()
+    context = {'form': form}
+    return render(request, 'common/review_detail.html', context)

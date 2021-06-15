@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load pybo_filter %}
 {% block content %}
 
 {% if forestList %}
@@ -17,12 +18,7 @@
     <div class="mb-1 text-muted">주소 : {{ data.addr1 }} {{ data.addr2 }}</div>
 	  
     <br>
-<<<<<<< HEAD
-
-	  <a href="#" class="btn btn-primary">>> 자세히</a>
-=======
-	  <a href="#" class="btn btn-primary">>> 리뷰 보러가기</a>
->>>>>>> master
+	  <a href="{% url 'common:review' %}" class="btn btn-primary">>> 리뷰 보러가기</a>
     </div>
     </div>
     

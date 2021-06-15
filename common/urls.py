@@ -12,4 +12,6 @@ urlpatterns = [
 	path('signup/', views.signup, name='signup'),
 	# 서울 자연 관광지 현황
 	path('forest/', views.forest, name='forest'),
+	# 관광지 리뷰
+	path('review/', views.review, name='review'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
