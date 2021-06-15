@@ -1,6 +1,8 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = 'common'
 
@@ -10,4 +12,4 @@ urlpatterns = [
 	path('signup/', views.signup, name='signup'),
 	# 서울 자연 관광지 현황
 	path('forest/', views.forest, name='forest'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

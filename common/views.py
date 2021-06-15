@@ -25,21 +25,21 @@ def signup(request):
 
 def forest(request):
     """
-    공공데이터 api 가져오기
+    서울의 자연관광지 api 연동
     """
     serviceUrl = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList'
     serviceKey = 'ffxl4VMnlHEnjLKdDw2uaUS%2BPXvEczJ2mROokL5mf4n4mvo%2Face3eraz6GHHH%2FlEEeWYdcpVp7JVhbEkzsS6PA%3D%3D'
     seviceKey_decode = unquote(serviceKey)
 
-    numOfRows = '50'
-    pageNo = '1'
-    MobileOS = 'ETC'
-    MobileApp = 'TourAPI3.0_Guide'
-    listYN = 'Y'
-    arrange = 'A'
-    contentTypeId = '12'
-    areaCode = '1'
-    cat1 = 'A01'
+    numOfRows = '50' # 한 페이지 결과 수
+    pageNo = '1' # 페이지 번호
+    MobileOS = 'ETC' # OS 구분
+    MobileApp = 'TourAPI3.0_Guide' # 서비스명
+    listYN = 'Y' # 목록 구분
+    arrange = 'B' # 정렬 구분 (A=제목순, B=조회순, C=수정일순, D=생성일순, E=거리순)
+    contentTypeId = '12' # 관광타입(관광지)
+    areaCode = '1' # 지역코드(서울)
+    cat1 = 'A01' # 대분류(자연)
 
     parameters = {"serviceKey":seviceKey_decode, "numOfRows" : numOfRows, "pageNo" : pageNo,
                     "MobileOS" : MobileOS, "MobileApp" : MobileApp, "listYN" : listYN, 
@@ -57,12 +57,14 @@ def forest(request):
         for element in iter:
             title = element.find('title').text # 제목
             addr1 = element.find('addr1').text # 주소
-            addr2 = element.find('addr2') # 상세주소
+            try:
+                addr2 = element.find('addr2').text # 상세주소
+            except Exception as e:
+                continue
             createdtime = element.find('createdtime').text # 콘텐츠 최초 등록일
             firstimage = element.find('firestimage') # 원본 대표 이미지
             firstimage2 = element.find('firestimage2') # 썸네일 대표 이미지
    
-
             data = {"title":title, "addr1":addr1, "addr2":addr2, "createdtime":createdtime,
                     "firstimage":firstimage, "firstimage2":firstimage2}
             
