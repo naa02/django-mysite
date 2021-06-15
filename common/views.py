@@ -32,7 +32,7 @@ def forest(request):
     serviceKey = 'ffxl4VMnlHEnjLKdDw2uaUS%2BPXvEczJ2mROokL5mf4n4mvo%2Face3eraz6GHHH%2FlEEeWYdcpVp7JVhbEkzsS6PA%3D%3D'
     seviceKey_decode = unquote(serviceKey)
 
-    numOfRows = '50' # 한 페이지 결과 수
+    numOfRows = '30' # 한 페이지 결과 수
     pageNo = '1' # 페이지 번호
     MobileOS = 'ETC' # OS 구분
     MobileApp = 'TourAPI3.0_Guide' # 서비스명
