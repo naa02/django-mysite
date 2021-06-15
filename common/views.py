@@ -5,6 +5,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import unquote, urlencode, quote_plus
 import requests
 import xml.etree.ElementTree as elemTree
+from .models import Forest
 
 def signup(request):
     """
@@ -50,6 +51,7 @@ def forest(request):
     print(response.text)
 
     forestList=[]
+    
     if response.status_code == 200:
         tree = elemTree.fromstring(response.text)
         iter = tree.iter(tag="item")
@@ -61,13 +63,10 @@ def forest(request):
                 addr2 = element.find('addr2').text # 상세주소
             except Exception as e:
                 continue
-            createdtime = element.find('createdtime').text # 콘텐츠 최초 등록일
-            firstimage = element.find('firestimage') # 원본 대표 이미지
-            firstimage2 = element.find('firestimage2') # 썸네일 대표 이미지
+            firstimage = element.find('firstimage').text # 원본 대표 이미지
    
-            data = {"title":title, "addr1":addr1, "addr2":addr2, "createdtime":createdtime,
-                    "firstimage":firstimage, "firstimage2":firstimage2}
-            
+            data = {"title":title, "addr1":addr1, "addr2":addr2, "firstimage":firstimage}
+
             forestList.append(data)
 
     context = {'forestList' : forestList}
