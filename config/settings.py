@@ -31,15 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'common.apps.CommonConfig',
     'pybo.apps.PyboConfig',
+    'common.apps.CommonConfig',
+    'nature.apps.NatureConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common.apps.CommonConfig',
 ]
 
 MIDDLEWARE = [
