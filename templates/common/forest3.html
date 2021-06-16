@@ -18,7 +18,7 @@
     <div class="mb-1 text-muted">주소 : {{ data.addr1 }} {{ data.addr2 }}</div>
 	  
     <br>
-	  <a href="{% url 'common:comment2' %}" class="btn btn-primary">>> 자세히</a>
+	  <button href="{% url 'common:abc/comment2/<int:comment2_id>/' %}" class="btn btn-primary">>> 자세히</a>
     </div>
     </div>
     

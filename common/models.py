@@ -15,5 +15,5 @@ class Comment2(models.Model):
     content = models.TextField()
     create_date = models.DateTimeField()
     modify_date = models.DateTimeField(null=True, blank=True)
-    forest = models.ForeignKey(Forest, null=True, blank=True, on_delete=models.CASCADE)
+   
  

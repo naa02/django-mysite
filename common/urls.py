@@ -19,5 +19,6 @@ urlpatterns = [
 	# 제주도 자연 관광지 현원
 	path('forest3/', views.forest3, name='forest3'),
 	# 관광지 리뷰
-	path('comment2/', views.comment2, name='comment2'),
+	# path('comment2/<int:comment2_id>/', views.comment2, name='comment2'),
+	path('abc/comment2/', views.comment2, name='comment2'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,14 +1,14 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from common.forms import UserForm
+from django.shortcuts import render, get_object_or_404, redirect, resolve_url
+from common.forms import UserForm, Comment2Form
 from urllib.request import Request, urlopen
 from urllib.parse import unquote, urlencode, quote_plus
 import requests
 import xml.etree.ElementTree as elemTree
-from .models import Forest, Comment2
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .forms import Comment2Form
+from .models import Forest, Comment2
+import sqlite3
 
 def signup(request):
     """
@@ -49,6 +49,7 @@ def forest(request):
                     "MobileOS" : MobileOS, "MobileApp" : MobileApp, "listYN" : listYN, 
                     "arrange" : arrange, "contentTypeId" : contentTypeId, "areaCode" : areaCode,
                     "cat1" : cat1 }
+
     response = requests.get(serviceUrl, params=parameters)
 
     print(response.text)
@@ -75,6 +76,7 @@ def forest(request):
 
     context = {'forestList' : forestList}
     print(forestList)
+
     return render(request,'common/forest.html',context)
 
 def forest2(request):
@@ -236,12 +238,42 @@ def forest4(request):
     print(forestList) # List에 넣어서 출력
     return render(request,'common/forest4.html',context)
 
+# @login_required(login_url='common:login')
+# def comment2_create(request, comment2_id):
+#     """
+#     장소에 대한 comment 등록하기
+#     """
+#     forest = get_object_or_404(Forest, pk=comment2_id)
+#     if request.method == "POST":
+#         form = Comment2Form(request.POST)
+#         if form.is_valid():
+#             comment2 = form.save(commit=False)
+#             comment2.author = request.user  # 추가한 속성 author 적용
+#             comment2.create_date = timezone.now()
+#             comment2.save()
+#             return redirect('{}#comment2_{}'.format(
+#                 resolve_url('common:comment2', comment2_id=forest.id)))
+#     else:
+#         form = Comment2Form()
+#     context = {'form': form}
+#     return render(request, 'common/review_form.html', context)
+
+def index2(request, comment2_id):
+    """
+    comment 목록 출력
+    """
+    comment2 = get_object_or_404(Comment2, pk=comment2_id)
+    context = {'comment2': comment2}
+    return render(request, 'common/review_detail.html', context)
+
 
 @login_required(login_url='common:login')
-def comment2(request):
+def comment2(request, comment2_id):
     """
-    장소에 대한 comment 등록
+    장소에 대한 comment 보여주기
     """
+    print(comment2_id)
+    comment2 = get_object_or_404(Comment2, pk=comment2_id)
     if request.method == 'POST':
         form = Comment2Form(request.POST)
         if form.is_valid():
@@ -249,7 +281,8 @@ def comment2(request):
             comment2.author = request.user  # 추가한 속성 author 적용
             comment2.create_date = timezone.now()
             comment2.save()
-            return redirect('comment:forest')
+            return redirect('{}#comment2_{}'.format(
+                resolve_url('common:index', comment2_id=comment2.id)))
     else:
         form = Comment2Form()
     context = {'form': form}
