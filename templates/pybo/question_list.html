@@ -101,8 +101,8 @@
     </ul>
     <!-- 페이징처리 끝 -->
 
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">
-        질문 등록하기
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-info btn-lg float-right">
+        글쓰기
     </a>
 </div>
 
@@ -111,6 +111,8 @@
     <input type="hidden" id="page" name="page" value="{{ page }}">
     <input type="hidden" id="so" name="so" value="{{ so }}">
 </form>
+<!-- footer --> 
+<div class="jumbotron text-center mt-5 mb-0"> <h3 class="text-secondary">CCCR_DjagoProject</h3> <p>[방방곡곡:Nature] is powered by <span class="text-primary">Nayoung</span> / Designed by <span class="text-primary">Nayoung</span></p> </div>
 
 {% endblock %}
 
