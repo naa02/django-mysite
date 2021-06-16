@@ -5,10 +5,10 @@ from urllib.request import Request, urlopen
 from urllib.parse import unquote, urlencode, quote_plus
 import requests
 import xml.etree.ElementTree as elemTree
-from .models import Forest, Review
+from .models import Forest, Comment2
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .forms import ReviewForm
+from .forms import Comment2Form
 
 def signup(request):
     """
@@ -77,19 +77,19 @@ def forest(request):
     return render(request,'common/forest.html',context)
 
 @login_required(login_url='common:login')
-def review(request):
+def comment2(request):
     """
-    review 등록
+    장소에 대한 comment 등록
     """
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        form = Comment2Form(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.author = request.user  # 추가한 속성 author 적용
-            review.create_date = timezone.now()
-            review.save()
-            return redirect('pybo:index')
+            comment2 = form.save(commit=False)
+            comment2.author = request.user  # 추가한 속성 author 적용
+            comment2.create_date = timezone.now()
+            comment2.save()
+            return redirect('comment:forest')
     else:
-        form = ReviewForm()
+        form = Comment2Form()
     context = {'form': form}
     return render(request, 'common/review_detail.html', context)

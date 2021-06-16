@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from common.models import Forest,Review
+from common.models import Forest,Comment2
 
 class UserForm(UserCreationForm):
     email = forms.EmailField(label="이메일")
@@ -10,10 +10,10 @@ class UserForm(UserCreationForm):
         model = User
         fields = ("username", "email")
 
-class ReviewForm(forms.ModelForm):
+class Comment2Form(forms.ModelForm):
     class Meta:
-        model = Review
+        model = Comment2
         fields = ['content']
         labels = {
-            'content': 'Review 내용',
+            'content': 'Comment 내용',
         }
