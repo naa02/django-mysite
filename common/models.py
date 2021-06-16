@@ -7,6 +7,9 @@ class Forest(models.Model):
     addr2 = models.TextField()
     firstimage = models.ImageField(upload_to='images/',blank=True, null=True)
 
+    def __str__(self) :
+        return self.title
+
 class Comment2(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
