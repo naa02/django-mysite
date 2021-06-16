@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load pybo_filter %}
+
+{% block content %}
+<div class="container my-3">
+<h3 class="border-bottom my-3 py-2">Comment 화면</h3>
+<div class="col-11">  <!-- 코멘트영역 -->
+        <div class="card">
+        <div class="card-body">
+            <div class="card-text">{{ comment2.content|mark }}</div>
+            <div class="d-flex justify-content-end">
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

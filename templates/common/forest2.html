@@ -5,7 +5,7 @@
 {% if forestList %}
     
     <div class="container my-3">
-    <h2 class="border-bottom py-2">서울의 자연관광지</h2>
+    <h2 class="border-bottom py-2">경기도의 자연관광지</h2>
     <div class="row">
     {% for data in forestList %}
     
@@ -18,8 +18,7 @@
     <div class="mb-1 text-muted">주소 : {{ data.addr1 }} {{ data.addr2 }}</div>
 	  
     <br>
-
-	  <a href="#" class="btn btn-primary">>> 자세히</a>
+	  <a href="{% url 'common:comment2' %}" class="btn btn-primary">>> 리뷰 보러가기</a>
     </div>
     </div>
     
