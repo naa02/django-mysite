@@ -6,9 +6,9 @@
 
 ## 개발 환경
 - **server**  
-  - CentOS7로 할 예정  
+  - centOS 7 (Apache & mod_wsgi)
 - **db**  
-  - MySQL로 할 예정  
+  - MySQL 
 - **python**  
   - 3.8.5 ver  
   - Django 3.1.3  
@@ -19,3 +19,5 @@
   - bootstrap 4.5.3  
 - **openAPI**
   - [한국관광공사_국문 관광정보 서비스](https://www.data.go.kr/data/15057787/openapi.do)
+- **사용모듈**  
+  - requirements.txt 참조  
