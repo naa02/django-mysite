@@ -10,7 +10,7 @@
 - **db**  
   - MySQL로 할 예정  
 - **python**  
-  - 3.8 ver  
+  - 3.8.5 ver  
   - Django 3.1.3  
   - requests etc  
 - **javascript**  
