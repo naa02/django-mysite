@@ -17,7 +17,7 @@
   - jquery-3.6.0.min.js  
 - **css**  
   - bootstrap 4.5.3  
-- **사용모듈**  
+- **module**  
   - requirements.txt 참조  
 - **openAPI**
   - [한국관광공사_국문 관광정보 서비스](https://www.data.go.kr/data/15057787/openapi.do)
