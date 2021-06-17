@@ -5,11 +5,11 @@
 {% if forestList %}
     
     <div class="container my-3">
-    <h2 class="border-bottom py-2">서울의 자연관광지</h2>
+    <h2 class="border-bottom py-2">제주도의 자연관광지</h2>
     <div class="row">
     {% for data in forestList %}
     
-    <div class="card" style="margin: 20px 10px 10px 10px; width: 20rem">
+    <div class="card" style="margin: 20px 10px 10px 10px; width: 34rem">
     
   	<img src="{{ data.firstimage }}" class="card-img-top" alt="" class="img-thumbnail">
     
@@ -18,8 +18,6 @@
     <div class="mb-1 text-muted">주소 : {{ data.addr1 }} {{ data.addr2 }}</div>
 	  
     <br>
-
-	  <a href="{% url 'nature:comment2' %}" class="btn btn-primary">>> 자세히</a>
     </div>
     </div>
     
