@@ -6,6 +6,8 @@ from django.utils import timezone
 from ..forms import QuestionForm
 from ..models import Question
 
+from django.views.decorators.csrf import csrf_exempt
+
 @login_required(login_url='common:login')
 def question_create(request):
     """
