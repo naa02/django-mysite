@@ -6,7 +6,7 @@
 
 ## 개발 환경
 - **server**  
-  - centOS 7 (Apache & mod_wsgi)
+  - centOS 7
 - **db**  
   - MySQL 
 - **python**  
